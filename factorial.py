@@ -1,5 +1,12 @@
+"""
+Example of Using the unittest Module in Python
+
+This script provides a simple example of how to use the unittest module 
+in Python to create and run unit tests.
+"""
+import unittest
 # Function to calculate the factorial of a non-negative integer
-def factorial(n):
+def factorial(number):
     """
     Calculate the factorial of a non-negative integer.
 
@@ -9,15 +16,14 @@ def factorial(n):
     Returns:
         int: The factorial of the input integer.
     """
-    if n < 0:
+    if number < 0:
         raise ValueError("Factorial is not defined for negative numbers.")
-    if n == 0:
+    if number == 0:
         return 1
-    else:
-        result = 1
-        for i in range(1, n + 1):
-            result *= i
-        return result
+    result = 1
+    for i in range(1, number + 1):
+        result *= i
+    return result
 
 # Test cases for the factorial function
 def test_factorial_positive():
@@ -49,9 +55,9 @@ def test_factorial_negative():
     try:
         # Attempt to calculate the factorial of -1, which should raise a ValueError
         factorial(-1)
-    except ValueError as e:
+    except ValueError as error:
         # Check that the error message matches the expected message
-        assert str(e) == "Factorial is not defined for negative numbers."
+        assert str(error) == "Factorial is not defined for negative numbers."
 
 def test_factorial_large_input():
     """
@@ -61,5 +67,4 @@ def test_factorial_large_input():
     assert factorial(50) == 30414093201713378043612608166064768844377641568960512000000000000
 
 if __name__ == "__main__":
-    import pytest
-    pytest.main()
+    unittest.main()
